@@ -2,15 +2,23 @@ import { getApp, getApps, initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
+import {
+  EXPO_FIREBASE_API_KEY,
+  EXPO_FIREBASE_AUTH_DOMAIN,
+  EXPO_FIREBASE_PROJECT_ID,
+  EXPO_FIREBASE_STORAGE_BUCKET,
+  EXPO_FIREBASE_MESSAGING_SENDER_ID,
+  EXPO_FIREBASE_APP_ID
+} from '@env';
 
 // Your Firebase project configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyALV2UNTntnJapTa3Ei7Od7xGYM0slKaYQ",
-  authDomain: "framez-e698f.firebaseapp.com",
-  projectId: "framez-e698f",
-  storageBucket: "framez-e698f.appspot.com",
-  messagingSenderId: "820928833273",
-  appId: "1:820928833273:web:98994bcf0a4422f06d2428"
+  apiKey: process.env.EXPO_FIREBASE_API_KEY,
+  authDomain: process.env.EXPO_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.EXPO_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.EXPO_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.EXPO_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.EXPO_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase only once

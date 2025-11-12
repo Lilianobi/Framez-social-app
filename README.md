@@ -23,7 +23,7 @@ Logout and auto-redirect on sign-out
 
 🖼️ Posts (Convex)
 
-Create text or image posts
+Create text posts only
 
 Upload and store images in Convex storage
 
@@ -39,7 +39,7 @@ Real-time feed refresh
 
 Display user details and post count
 
-View all personal posts
+View all personal posts(on refresh)
 
 Clean, Instagram-inspired layout
 
@@ -207,7 +207,7 @@ Once complete, download the APK and upload it to Appetize.io
 
 🔍 Search users and posts
 
-🎞️ Stories / Reels feature
+🎞️ image posts/ Stories / Reels feature
 
 🔔 Push notifications
 
@@ -220,6 +220,7 @@ Once complete, download the APK and upload it to Appetize.io
 
 Lilian Obi
 💼 GitHub --=> https://github.com/Lilianobi/Framez-social-app.git
+appetize.io --=> https://appetize.io/app/b_d3u7tya2ffygcqbkw6p2c3g6hm
  My Demo link --=> https://drive.google.com/drive/folders/1rx2Rv8ze2dKLK4LYFuDad-3BOP2xCEPX?usp=sharing
 
 ❤️ Acknowledgements
