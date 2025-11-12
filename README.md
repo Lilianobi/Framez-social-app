@@ -1,50 +1,235 @@
-# Welcome to your Expo app 👋
+📱 Framez - Social Media Mobile App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern React Native social app built with Expo, Firebase Authentication, and Convex for backend and storage.
+Framez lets users share posts, upload images, like content, and connect with others through a smooth, social experience.
 
-## Get started
+REACT NATIVE
+EXPO
+FIREBASE
+CONVEX
+TYPESCRIPT
 
-1. Install dependencies
 
-   ```bash
-   npm install
-   ```
+🌟 Features
+🔐 Authentication (Firebase)
 
-2. Start the app
+Secure email/password registration
 
-   ```bash
-   npx expo start
-   ```
+Persistent login sessions
 
-In the output, you'll find options to open the app in a
+User profile with display name and email
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Logout and auto-redirect on sign-out
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+🖼️ Posts (Convex)
 
-## Get a fresh project
+Create text or image posts
 
-When you're ready, run:
+Upload and store images in Convex storage
 
-```bash
-npm run reset-project
-```
+Like and unlike posts
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+See user names, captions, and timestamps
 
-## Learn more
+Delete your own posts
 
-To learn more about developing your project with Expo, look at the following resources:
+Real-time feed refresh
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+👤 Profile
 
-## Join the community
+Display user details and post count
 
-Join our community of developers creating universal apps.
+View all personal posts
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Clean, Instagram-inspired layout
+
+🚀 Quick Start
+Prerequisites
+
+Node.js ≥ 18
+
+npm or yarn
+
+Expo CLI (npm install -g expo-cli)
+
+Convex CLI (npm install -g convex)
+
+Firebase project (for Auth only)
+
+1️⃣ Clone Repository
+git clone https://github.com/Lilianobi/Framez-social-app.git
+cd framez
+
+2️⃣ Install Dependencies
+npm install
+# or
+yarn install
+
+3️⃣ Setup Firebase (Authentication Only)
+
+In your Firebase Console:
+
+Enable Email/Password Authentication only
+
+Copy your Firebase credentials into firebaseConfig.ts:
+
+// src/firebaseConfig.ts
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  appId: "YOUR_APP_ID",
+};
+
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+
+4️⃣ Setup Convex
+
+Log in to Convex
+
+npx convex login
+
+
+Initialize Convex inside your project:
+
+npx convex dev
+
+
+Create your backend functions inside /convex/ (e.g. posts.ts, users.ts).
+
+5️⃣ Run the App
+npm start
+# or
+expo start
+
+
+Then press:
+
+a → open on Android
+
+i → open on iOS Simulator
+
+Or scan the QR code with Expo Go
+
+🏗️ Project Structure
+framez/
+├── app/
+│   ├── (tabs)/
+│   │   ├── feed.tsx              # Main feed screen
+│   │   ├── profile.tsx           # User profile tab
+│   │   
+│   └── _layout.tsx               # Tab navigation layout
+│
+├── assets/
+├── convex/
+│   ├── posts.ts                  # Convex functions for posts
+│   ├── users.ts                  # Convex functions for user data
+│   └── schema.ts                 # Convex schema definitions
+│
+├── src/
+│   ├── components/
+│   │   ├── CreatePostModal.tsx   # Post creation modal
+│   │   ├── PostCard.tsx          # Post UI component
+│   │   └── LoadingSpinner.tsx    # Loading indicator
+│   ├── context/
+│   │   └── AuthContext.tsx       # Firebase Auth state management
+│   ├── types/
+│   │   └── index.ts              # TypeScript interfaces
+│   └── utils/
+│       └── helpers.ts            # Utility functions
+│
+├── firebaseConfig.ts             # Firebase Auth configuration
+├── convex.json                   # Convex config
+├── app.config.js                 # Expo project config
+├── package.json
+└── README.md
+
+🛠️ Tech Stack
+Layer	Technology
+Frontend	React Native + Expo
+Auth	Firebase Authentication
+Backend	Convex (Functions + Database + Storage)
+Image Storage	Convex Storage
+Styling	React Native + Custom Components
+Navigation	Expo Router (Tabs)
+Language	TypeScript
+📦 Key Dependencies
+{
+  "expo": "~51.0.0",
+  "react-native": "0.74.0",
+  "firebase": "^10.7.1",
+  "convex": "^1.15.0",
+  "expo-image-picker": "~15.0.4",
+  "expo-router": "^3.5.9"
+}
+
+🎨 Design Highlights
+
+Minimal, Instagram-inspired interface
+
+Animated tab transitions
+
+Curved modal for creating posts
+
+Rounded post cards with shadow
+
+Responsive for all screen sizes
+
+Pull-to-refresh and like animations
+
+🔒 Security
+
+Firebase authentication guards
+
+Convex access control rules
+
+User-owned post deletion only
+
+Safe server-side validation with Convex schema
+
+🚢 Deployment
+Build for Android (APK)
+npx eas build -p android --profile preview
+
+
+Once complete, download the APK and upload it to Appetize.io
+.
+
+🔮 Future Enhancements
+
+💬 Comments on posts
+
+👥 Follow/following system
+
+🔍 Search users and posts
+
+🎞️ Stories / Reels feature
+
+🔔 Push notifications
+
+🌙 Dark mode
+
+🎭 Reactions and emoji effects
+
+
+👨‍💻 Author
+
+Lilian Obi
+💼 GitHub --=> https://github.com/Lilianobi/Framez-social-app.git
+ My Demo link --=> https://drive.google.com/drive/folders/1rx2Rv8ze2dKLK4LYFuDad-3BOP2xCEPX?usp=sharing
+
+❤️ Acknowledgements
+
+Expo Team
+
+Convex
+
+Firebase
+
+React Native community
+
+AI & Google search

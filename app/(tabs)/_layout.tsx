@@ -1,35 +1,83 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { Tabs, useRouter } from 'expo-router';
+import { useEffect } from 'react';
+import { Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useAuth } from '../../src/context/AuthContext';
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+export default function TabsLayout() {
+  const { user } = useAuth();
+  const router = useRouter();
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  useEffect(() => {
+    if (!user) {
+      router.replace('/(auth)/login');
+    }
+  }, [user]);
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }} edges={['bottom']}>
+      <Tabs
+        screenOptions={{
+          tabBarActiveTintColor: '#667eea',
+          tabBarInactiveTintColor: '#8E8E93',
+          headerShown: false,
+          tabBarStyle: {
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            backgroundColor: '#fff',
+            borderTopWidth: 1,
+            borderTopColor: '#E5E5EA',
+            height: Platform.OS === 'ios' ? 85 : 70,
+            paddingBottom: Platform.OS === 'ios' ? 30 : 20,
+            paddingTop: 8,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: -4 },
+            shadowOpacity: 0.1,
+            shadowRadius: 8,
+            elevation: 16,
+          },
+          tabBarLabelStyle: {
+            fontSize: 11,
+            fontWeight: '600',
+            marginTop: -2,
+            marginBottom: 2,
+          },
+          tabBarIconStyle: {
+            marginTop: 0,
+          },
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="feed"
+          options={{
+            title: 'Home',
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons
+                name={focused ? 'home' : 'home-outline'}
+                size={26}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            title: 'Profile',
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons
+                name={focused ? 'person' : 'person-outline'}
+                size={26}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen name="index" options={{ href: null }} />
+        <Tabs.Screen name="create" options={{ href: null }} />
+      </Tabs>
+    </SafeAreaView>
   );
 }
